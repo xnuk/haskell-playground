@@ -15,7 +15,12 @@ def get_resolver(channel : ResolverChannel)
 		end
 
 	response = HTTP::Client.head "https://www.stackage.org/#{resolver_channel}"
-	m = response.headers["location"].match(/\/(lts-[0-9\.]+|nightly-[0-9-]+)/)
+	m = response.headers["location"].match %r{
+		/(
+			lts-[0-9\.]+
+			|nightly-[0-9-]+
+		)
+	}x
 
 	exit 1 if m.nil?
 
