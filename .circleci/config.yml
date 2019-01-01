@@ -20,6 +20,7 @@ jobs:
       - run: runhaskell update-stack.hs
 
       - run: stack setup
+      - run: stack install hlint
       - run: stack exec env
 
       - save_cache:
@@ -29,6 +30,7 @@ jobs:
             - ../.stack
 
       - run: stack build
+      - run: hlint
 
 workflows:
   build:
