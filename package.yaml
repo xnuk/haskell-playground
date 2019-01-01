@@ -1,20 +1,20 @@
-name:                haskell-buildchain
-version:             0.1.0.0
-#synopsis:
-#description:
-homepage:            https://github.com/githubuser/haskell-buildchain#readme
-license:             BSD3
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2018 Author name here
-category:            Web
+name: haskell-buildchain
+version: 0.1.0.0
+license: BSD3
+maintainer: xnuk
+copyright: 2018 @xnuk
+category: Web
 extra-source-files:
 - README.md
+- LICENSE
+
+github: xnuk/haskell-buildchain
 
 dependencies:
   - base >= 4.7 && < 5
 
 executables:
   haskell-buildchain:
-    source-dirs:      src
-    main:             Main.hs
+    source-dirs: src
+    main: Main.hs
+    ghc-options: -Wall -O2 -fwarn-tabs -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unused-do-bind -Werror
