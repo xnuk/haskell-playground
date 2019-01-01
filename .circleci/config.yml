@@ -1,7 +1,6 @@
 _foo_bar_baz:
   # To update cache:
   #     git rev-parse HEAD > .circleci/cache-counter
-  - &crystal_cache_key r{{ checksum ".circleci/cache-counter" }}-crystal-script-{{ arch }}-{{ checksum "update-stack.cr" }}
   - &stack_cache_key r{{ checksum ".circleci/cache-counter" }}-stack-{{ arch }}-{{ checksum "package.yaml" }}-{{ checksum "stack.yaml" }}
 
 version: 2.1
@@ -17,19 +16,11 @@ jobs:
           keys:
             - *stack_cache_key
 
-      - restore_cache:
-          keys:
-            - *crystal_cache_key
+      - run: test -f curl || apt-get update -y && apt-get install curl -y
+      - run: runhaskell update-stack.hs
 
-      - run: test -f update-stack || sh .circleci/crystal_build.sh
-
-      - run: ./update-stack && stack setup
+      - run: stack setup
       - run: stack exec env
-
-      - save_cache:
-          key: *crystal_cache_key
-          paths:
-            - ./update-stack
 
       - save_cache:
           key: *stack_cache_key
