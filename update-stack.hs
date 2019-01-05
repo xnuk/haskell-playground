@@ -96,6 +96,7 @@ main = do
         pos <- hGetPosn h
         (res, sheet) <- unwrapResolver h
         resolver' <- unwrapCurl res
+        print resolver'
         hSetPosn pos
         write h resolver' sheet
     where
