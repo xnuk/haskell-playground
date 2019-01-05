@@ -61,7 +61,7 @@ header :: String -> [(String, String)]
 header = dropTo '/' |. readP_to_S (parseResolver LTS <++ parseResolver Nightly)
 
 curl :: ResolverChannel -> IO (Maybe String)
-curl res = do
+curl res =
     readProcess "curl" ["--head", "https://www.stackage.org/" <> show res] ""
         >& lines
         |. find (isPrefixOf "Location: ")
@@ -77,8 +77,8 @@ resolver h = do
 
     return $ case line of
         Just (idx, str)
-            | (show LTS) `isPrefixOf` str -> Just (LTS, sheet)
-            | (show Nightly) `isPrefixOf` str -> Just (Nightly, sheet)
+            | show LTS `isPrefixOf` str -> Just (LTS, sheet)
+            | show Nightly `isPrefixOf` str -> Just (Nightly, sheet)
             where sheet = second safeTail $ splitAt idx file
         _ -> Nothing
 
@@ -91,7 +91,7 @@ unwrap :: Monad m => m (Maybe a) -> String -> m a
 unwrap = flip (fmap . fromMaybe . error)
 
 main :: IO ()
-main = do
+main =
     withFile "./stack.yaml" ReadWriteMode $ \h -> do
         pos <- hGetPosn h
         (res, sheet) <- unwrapResolver h
@@ -100,7 +100,7 @@ main = do
         hSetPosn pos
         write h resolver' sheet
     where
-        unwrapResolver h = unwrap (resolver h) $
+        unwrapResolver h = unwrap (resolver h)
             "stack.yaml is wrongly configured or doesn't exist"
 
         unwrapCurl res = unwrap (curl res) $
