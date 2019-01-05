@@ -40,7 +40,7 @@ jobs:
             - ../.local/bin
 
       - run: stack build
-      - run: hlint
+      - run: hlint .
 
 workflows:
   build:
