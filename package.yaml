@@ -1,4 +1,4 @@
-name: haskell-buildchain
+name: yaml-playground
 version: 0.1.0.0
 license: BSD3
 maintainer: xnuk
@@ -8,7 +8,7 @@ extra-source-files:
 - README.md
 - LICENSE
 
-github: xnuk/haskell-buildchain
+github: xnuk/yaml-playground
 
 dependencies:
   - base >= 4.7 && < 5
@@ -49,7 +49,7 @@ default-extensions:
   - NumericUnderscores
 
 executables:
-  haskell-buildchain:
+  yaml-playground:
     source-dirs: src
     main: Main.hs
     ghc-options: -Wall -O2 -fwarn-tabs -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unused-do-bind -Werror
