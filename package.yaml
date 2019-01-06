@@ -24,8 +24,6 @@ default-extensions:
   - KindSignatures
   - BangPatterns
   - NamedFieldPuns
-  - RestrictedTypeSynonyms
-  - HereDocuments
   - TypeFamilies
   - StandaloneDeriving
   - UnicodeSyntax
