@@ -17,7 +17,7 @@ jobs:
             - *stack_cache_key
 
       - run: test -f curl || apt-get update -y && apt-get install curl -y
-      - run: runhaskell update-stack.hs
+      - run: ./update-stack.hs
 
       - run: stack setup
       - run: stack install hlint

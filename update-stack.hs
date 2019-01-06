@@ -1,3 +1,5 @@
+#!/usr/bin/env runhaskell
+{-# OPTIONS_GHC -Wall #-}
 {-# LANGUAGE PackageImports #-}
 module UpdateStack (main) where
 import "process" System.Process
