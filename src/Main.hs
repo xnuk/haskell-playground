@@ -1,4 +1,9 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
 main :: IO ()
-main = putStrLn "hello world"
+main = do
+    resp <- get "https://github.com/xnuk.keys"
+    print $ resp ^. responseBody
+    let a = "aaa"
+    putStrLn $ [i|bbb #{aaa}Bbb|]
