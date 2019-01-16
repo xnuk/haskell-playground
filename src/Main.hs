@@ -5,5 +5,5 @@ main :: IO ()
 main = do
     resp <- get "https://github.com/xnuk.keys"
     print $ resp ^. responseBody
-    let a = "aaa"
+    let a = "aaa" :: String
     putStrLn $ [i|bbb #{a}Bbb|]
