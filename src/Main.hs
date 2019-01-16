@@ -6,4 +6,4 @@ main = do
     resp <- get "https://github.com/xnuk.keys"
     print $ resp ^. responseBody
     let a = "aaa" :: String
-    putStrLn $ [i|bbb #{a}Bbb|]
+    putStrLn [i|bbb #{a}Bbb|]
