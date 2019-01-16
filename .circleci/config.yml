@@ -16,7 +16,7 @@ jobs:
           keys:
             - *stack_cache_key
 
-      - run: apt-get update -y && apt-get install curl libpcre2-dev -y
+      - run: apt-get update -y && apt-get install curl libpcre++-dev -y
       - run: ./update-stack.hs
 
       - run: stack setup
