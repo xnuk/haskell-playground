@@ -22,6 +22,7 @@ jobs:
       - run: stack setup
       - run: stack install hlint
       - run: stack exec env
+      - run: stack build --only-snapshot
 
       - save_cache:
           key: *stack_cache_key
