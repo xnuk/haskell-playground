@@ -5,6 +5,7 @@ module UpdateStack (main) where
 import "process" System.Process
 import "base" Data.List
 import "base" Data.Maybe
+import "base" Data.Monoid
 import "base" Control.Applicative
 import "base" Data.Function
 import "base" Text.ParserCombinators.ReadP
