@@ -8,4 +8,4 @@ circleOption :: Text -> Options
 circleOption token = defaults & header "Accept" .~ ["application/json"] & param "circle-token" .~ [token]
 
 circleGet token url = getWith (circleOption token) (baseUrl ++ url)
-circleTrigger token url = postWith (circleOption token) (baseUrl ++ url) mempty
+circleTrigger token url = postWith (circleOption token) (baseUrl ++ url) (mempty :: ByteString)
