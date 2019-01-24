@@ -3,6 +3,8 @@ module Prelude
     ( module P
     , ByteString
     , Text
+    , LazyByteString
+    , LazyText
     , module Conduit
     , module Control.Monad
     , module Control.Arrow
@@ -20,7 +22,9 @@ module Prelude
     ) where
 
 import "bytestring" Data.ByteString (ByteString)
+import qualified "bytestring" Data.ByteString.Lazy as L (ByteString)
 import "text" Data.Text (Text)
+import qualified "text" Data.Text.Lazy as L (Text)
 import "conduit" Conduit
 import "base" Prelude as P
 import "base" Control.Monad
@@ -37,3 +41,6 @@ import "string-conversions" Data.String.Conversions (convertString)
 import "pcre-heavy" Text.Regex.PCRE.Heavy hiding (compileM)
 import "raw-strings-qq" Text.RawString.QQ (r)
 import "interpolate" Data.String.Interpolate.IsString (i)
+
+type LazyByteString = L.ByteString
+type LazyText = L.Text
