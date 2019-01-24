@@ -3,7 +3,7 @@ module Main where
 
 main :: IO ()
 main = do
-    resp <- get "https://github.com/xnuk.keys"
+    resp <- httpGet "https://github.com/xnuk.keys"
     print $ resp ^. responseBody
     let a = "aaa" :: String
     putStrLn [i|bbb #{a}Bbb|]

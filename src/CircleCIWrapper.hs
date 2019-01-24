@@ -1,12 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
 module CircleCIWrapper where
 
+newtype Token = Token Text
+
 baseUrl :: String
 baseUrl = "https://circleci.com/api/v1.1"
 
 circleOption :: Text -> Options
-circleOption token = defaults & header "Accept" .~ ["application/json"] & param "circle-token" .~ [token]
+circleOption token = defaults
+    & header "Accept" .~ ["application/json"]
+    & param "circle-token" .~ [token]
 
-circleGet, circleTrigger :: Text -> String -> IO (Response LazyByteString)
-circleGet token url = getWith (circleOption token) (baseUrl ++ url)
-circleTrigger token url = postWith (circleOption token) (baseUrl ++ url) (mempty :: ByteString)
+get, trigger :: String -> Token -> IO (Response LazyByteString)
+get url (Token token) = httpGetWith (circleOption token) (baseUrl ++ url)
+trigger url (Token token)  = httpPostWith (circleOption token) (baseUrl ++ url) bempty

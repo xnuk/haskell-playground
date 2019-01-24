@@ -5,6 +5,7 @@ module Prelude
     , Text
     , LazyByteString
     , LazyText
+    , bempty
     , module Conduit
     , module Control.Monad
     , module Control.Arrow
@@ -15,13 +16,36 @@ module Prelude
     , module Data.Monoid
     , module Data.Default.Class
     , module Lens.Micro.Platform
-    , module Network.Wreq
     , convertString
     , module Text.Regex.PCRE.Heavy
     , r, i
+
+    , module Network.Wreq
+    , httpGet
+    , httpGetWith
+    , httpPost
+    , httpPostWith
+    , httpHead
+    , httpHeadWith
+    , httpOptions
+    , httpOptionsWith
+    , httpPut
+    , httpPutWith
+    , httpDelete
+    , httpDeleteWith
+
+
+
+
+
+
+
+
+
     ) where
 
 import "bytestring" Data.ByteString (ByteString)
+import qualified "bytestring" Data.ByteString as B
 import qualified "bytestring" Data.ByteString.Lazy as L (ByteString)
 import "text" Data.Text (Text)
 import qualified "text" Data.Text.Lazy as L (Text)
@@ -36,11 +60,41 @@ import "base" Data.Maybe
 import "base" Data.Monoid
 import "data-default-class" Data.Default.Class
 import "microlens-platform" Lens.Micro.Platform
-import "wreq" Network.Wreq
 import "string-conversions" Data.String.Conversions (convertString)
 import "pcre-heavy" Text.Regex.PCRE.Heavy hiding (compileM)
 import "raw-strings-qq" Text.RawString.QQ (r)
 import "interpolate" Data.String.Interpolate.IsString (i)
+import "wreq" Network.Wreq hiding (get, getWith, post, postWith, head_, headWith, options, optionsWith, put, putWith, delete, deleteWith)
+import qualified "wreq" Network.Wreq as W
+import "wreq" Network.Wreq.Types (type Putable, type Postable)
 
 type LazyByteString = L.ByteString
 type LazyText = L.Text
+
+bempty :: ByteString
+bempty = B.empty
+
+httpGet,     httpDelete     ::            String -> IO (Response LazyByteString)
+httpGetWith, httpDeleteWith :: Options -> String -> IO (Response LazyByteString)
+
+httpPost     :: Postable a =>            String -> a -> IO (Response LazyByteString)
+httpPostWith :: Postable a => Options -> String -> a -> IO (Response LazyByteString)
+
+httpHead,     httpOptions     ::            String -> IO (Response ())
+httpHeadWith, httpOptionsWith :: Options -> String -> IO (Response ())
+
+httpPut     :: Putable a =>            String -> a -> IO (Response LazyByteString)
+httpPutWith :: Putable a => Options -> String -> a -> IO (Response LazyByteString)
+
+httpGet         = W.get
+httpGetWith     = W.getWith
+httpPost        = W.post
+httpPostWith    = W.postWith
+httpHead        = W.head_
+httpHeadWith    = W.headWith
+httpOptions     = W.options
+httpOptionsWith = W.optionsWith
+httpPut         = W.put
+httpPutWith     = W.putWith
+httpDelete      = W.delete
+httpDeleteWith  = W.deleteWith
