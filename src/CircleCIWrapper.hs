@@ -12,5 +12,5 @@ circleOption token = defaults
     & param "circle-token" .~ [token]
 
 get, trigger :: String -> Token -> IO (Response LazyByteString)
-get url (Token token) = httpGetWith (circleOption token) (baseUrl ++ url)
-trigger url (Token token)  = httpPostWith (circleOption token) (baseUrl ++ url) bempty
+get     url (Token token) = httpGetWith  (circleOption token) (baseUrl ++ url)
+trigger url (Token token) = httpPostWith (circleOption token) (baseUrl ++ url) bempty
