@@ -3,6 +3,8 @@ module CircleCIWrapper where
 
 newtype Token = Token Text
 
+-- data VCSType = GitHub | Bitbucket
+
 baseUrl :: String
 baseUrl = "https://circleci.com/api/v1.1"
 

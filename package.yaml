@@ -30,6 +30,9 @@ dependencies:
   - transformers
   - raw-strings-qq
   - interpolate
+  - lens-aeson
+  - lens
+  - aeson
 
 default-extensions:
   - RecursiveDo

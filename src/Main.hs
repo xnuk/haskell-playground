@@ -1,9 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
+import CircleCIWrapper (get, Token(Token))
+
 main :: IO ()
 main = do
-    resp <- httpGet "https://github.com/xnuk.keys"
-    print $ resp ^. responseBody
-    let a = "aaa" :: String
-    putStrLn [i|bbb #{a}Bbb|]
+    token <- fmap (Token . convertString) (getEnv "CIRCLECI_TOKEN")
+    resp <- get "/me" token
+    print $ resp ^? responseBody . key "selected_email"

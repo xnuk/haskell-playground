@@ -18,9 +18,11 @@ module Prelude
     , module Lens.Micro.Platform
     , convertString
     , module Text.Regex.PCRE.Heavy
+    , module System.Environment
     , r, i
 
     , module Network.Wreq
+    , module Data.Aeson.Lens
     , httpGet
     , httpGetWith
     , httpPost
@@ -58,6 +60,7 @@ import "base" Data.Function
 import "base" Control.Monad.IO.Class
 import "base" Data.Maybe
 import "base" Data.Monoid
+import "base" System.Environment
 import "data-default-class" Data.Default.Class
 import "microlens-platform" Lens.Micro.Platform
 import "string-conversions" Data.String.Conversions (convertString)
@@ -67,6 +70,7 @@ import "interpolate" Data.String.Interpolate.IsString (i)
 import "wreq" Network.Wreq hiding (get, getWith, post, postWith, head_, headWith, options, optionsWith, put, putWith, delete, deleteWith)
 import qualified "wreq" Network.Wreq as W
 import "wreq" Network.Wreq.Types (type Putable, type Postable)
+import "lens-aeson" Data.Aeson.Lens
 
 type LazyByteString = L.ByteString
 type LazyText = L.Text
