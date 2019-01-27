@@ -44,7 +44,6 @@ import Prelude hiding (takeWhile)
 import "attoparsec" Data.Attoparsec.Text hiding (parse)
 import qualified Data.Text as T
 import Data.Char
-import Debug.Trace
 
 between :: Applicative f => f start -> f end -> f a -> f a
 between start end middle = start *> middle <* end
@@ -98,9 +97,7 @@ mapping = do
 
 configSection :: Parser ([Text], [(Text, Text)])
 configSection = do
-    pure $ traceShowId ("hi there" :: String)
     secHeader <- sectionHeader
-    pure (traceShowId secHeader)
     spaces
     secValues <- mapping `sepBy` spaces
     pure (secHeader, secValues)
@@ -108,7 +105,6 @@ configSection = do
 config :: Parser [([Text], [(Text, Text)])]
 config = do
     sp <- spaces
-    void . pure $ traceShowId sp
     many1 configSection
 
 parse :: Text -> Either String [([Text], [(Text, Text)])]
