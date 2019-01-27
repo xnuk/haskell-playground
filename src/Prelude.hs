@@ -38,7 +38,11 @@ module Prelude
     , httpDeleteWith
 
     , readFile
+    , writeFile
+    , withFile
     , readFileUtf8
+
+    , module RawFilePath
 
 
 
@@ -77,6 +81,8 @@ import qualified "wreq" Network.Wreq as W
 import "wreq" Network.Wreq.Types (type Putable, type Postable)
 import "lens-aeson" Data.Aeson.Lens
 import qualified "text" Data.Text.IO as T
+import "rawfilepath" Data.ByteString.RawFilePath (readFile, writeFile, withFile)
+import "rawfilepath" RawFilePath
 
 type LazyByteString = L.ByteString
 type LazyText = L.Text
@@ -111,6 +117,3 @@ httpDeleteWith  = W.deleteWith
 
 readFileUtf8 :: FilePath -> IO Text
 readFileUtf8 = T.readFile
-
-readFile :: FilePath -> IO ByteString
-readFile = B.readFile
