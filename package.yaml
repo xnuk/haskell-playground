@@ -73,6 +73,7 @@ library:
     - lens
     - aeson
     - rawfilepath
+  ghc-options: -O2 -Wall -fwarn-tabs -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unused-do-bind -Werror
 
 executables:
   haskell-playground:
@@ -80,4 +81,4 @@ executables:
     dependencies:
       - base >= 4.7 && < 5
       - *name
-    ghc-options: -Wall -fwarn-tabs -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unused-do-bind -Werror
+    ghc-options: -O2 -Wall -fwarn-tabs -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unused-do-bind -Werror

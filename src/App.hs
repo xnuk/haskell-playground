@@ -12,8 +12,11 @@ main = do
 -}
 
 import GitConfig (parse)
+import GitHeck (getBranchName)
 
 main :: IO ()
 main = do
     res <- parse <$> readFileUtf8 ".git/config"
+    branchName <- getBranchName ".git/"
     print res
+    print branchName

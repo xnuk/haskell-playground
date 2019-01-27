@@ -103,9 +103,7 @@ configSection = do
     pure (secHeader, secValues)
 
 config :: Parser [([Text], [(Text, Text)])]
-config = do
-    sp <- spaces
-    many1 configSection
+config = spaces *> many1 configSection
 
 parse :: Text -> Either String [([Text], [(Text, Text)])]
 parse = parseOnly config
