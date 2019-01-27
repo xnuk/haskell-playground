@@ -14,6 +14,7 @@ module Prelude
     , module Control.Monad.IO.Class
     , module Data.Maybe
     , module Data.Monoid
+    , module Data.Functor
     , module Data.Default.Class
     , module Lens.Micro.Platform
     , convertString
@@ -36,6 +37,9 @@ module Prelude
     , httpDelete
     , httpDeleteWith
 
+    , readFile
+    , readFileUtf8
+
 
 
 
@@ -52,12 +56,13 @@ import qualified "bytestring" Data.ByteString.Lazy as L (ByteString)
 import "text" Data.Text (Text)
 import qualified "text" Data.Text.Lazy as L (Text)
 import "conduit" Conduit
-import "base" Prelude as P
+import "base" Prelude as P hiding (readFile, writeFile)
 import "base" Control.Monad
 import "base" Control.Arrow
 import "base" Control.Applicative
 import "base" Data.Function
 import "base" Control.Monad.IO.Class
+import "base" Data.Functor
 import "base" Data.Maybe
 import "base" Data.Monoid
 import "base" System.Environment
@@ -71,6 +76,7 @@ import "wreq" Network.Wreq hiding (get, getWith, post, postWith, head_, headWith
 import qualified "wreq" Network.Wreq as W
 import "wreq" Network.Wreq.Types (type Putable, type Postable)
 import "lens-aeson" Data.Aeson.Lens
+import qualified "text" Data.Text.IO as T
 
 type LazyByteString = L.ByteString
 type LazyText = L.Text
@@ -102,3 +108,9 @@ httpPut         = W.put
 httpPutWith     = W.putWith
 httpDelete      = W.delete
 httpDeleteWith  = W.deleteWith
+
+readFileUtf8 :: FilePath -> IO Text
+readFileUtf8 = T.readFile
+
+readFile :: FilePath -> IO ByteString
+readFile = B.readFile

@@ -1,4 +1,4 @@
-name: haskell-playground
+name: &name haskell-playground
 version: 0.1.0.0
 license: BSD3
 maintainer: xnuk
@@ -10,29 +10,6 @@ extra-source-files:
 
 github: xnuk/haskell-playground
 
-dependencies:
-  - base >= 4.7 && < 5
-  - conduit
-  - wreq
-  - req
-  - microlens-platform
-  - yaml
-  - pcre-heavy
-  - aeson
-  - http-client-tls
-  - attoparsec
-  - bytestring
-  - text
-  - data-default-class
-  - containers
-  - unordered-containers
-  - string-conversions
-  - transformers
-  - raw-strings-qq
-  - interpolate
-  - lens-aeson
-  - lens
-  - aeson
 
 default-extensions:
   - RecursiveDo
@@ -69,8 +46,38 @@ default-extensions:
   - BlockArguments
   - NumericUnderscores
 
+library:
+  source-dirs: src
+  other-modules: Prelude
+  dependencies:
+    - base >= 4.7 && < 5
+    - conduit
+    - wreq
+    - req
+    - microlens-platform
+    - yaml
+    - pcre-heavy
+    - aeson
+    - http-client-tls
+    - attoparsec
+    - bytestring
+    - text
+    - data-default-class
+    - containers
+    - unordered-containers
+    - string-conversions
+    - transformers
+    - raw-strings-qq
+    - interpolate
+    - lens-aeson
+    - lens
+    - aeson
+    - rawfilepath
+
 executables:
   haskell-playground:
-    source-dirs: src
     main: Main.hs
-    ghc-options: -Wall -O2 -fwarn-tabs -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unused-do-bind -Werror
+    dependencies:
+      - base >= 4.7 && < 5
+      - *name
+    ghc-options: -Wall -fwarn-tabs -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unused-do-bind -Werror
