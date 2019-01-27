@@ -9,8 +9,40 @@
 # Specify additional command line arguments
 #
 # - arguments: [--color, --cpp-simple, -XQuasiQuotes]
-- extensions:
-  - default: true
+- arguments:
+  - -XRecursiveDo
+  - -XMultiParamTypeClasses
+  - -XFunctionalDependencies
+  - -XRankNTypes
+  - -XExistentialQuantification
+  - -XScopedTypeVariables
+  - -XImplicitParams
+  - -XKindSignatures
+  - -XBangPatterns
+  - -XNamedFieldPuns
+  - -XTypeFamilies
+  - -XStandaloneDeriving
+  - -XUnicodeSyntax
+  - -XLiberalTypeSynonyms
+  - -XTypeOperators
+  - -XRecordWildCards
+  - -XDisambiguateRecordFields
+  - -XGADTs
+  - -XInstanceSigs
+  - -XPackageImports
+  - -XQuasiQuotes
+  - -XTupleSections
+  - -XMultiWayIf
+  - -XLambdaCase
+  - -XDeriveFunctor
+  - -XNegativeLiterals
+  - -XBinaryLiterals
+  - -XExplicitNamespaces
+  - -XPatternSynonyms
+  - -XApplicativeDo
+  - -XDuplicateRecordFields
+  - -XBlockArguments
+  - -XNumericUnderscores
 
 # Control which extensions/flags/modules/functions can be used
 #
