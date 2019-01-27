@@ -10,39 +10,39 @@
 #
 # - arguments: [--color, --cpp-simple, -XQuasiQuotes]
 - arguments:
-  - RecursiveDo
-  - MultiParamTypeClasses
-  - FunctionalDependencies
-  - RankNTypes
-  - ExistentialQuantification
-  - ScopedTypeVariables
-  - ImplicitParams
-  - KindSignatures
-  - BangPatterns
-  - NamedFieldPuns
-  - TypeFamilies
-  - StandaloneDeriving
-  - UnicodeSyntax
-  - LiberalTypeSynonyms
-  - TypeOperators
-  - RecordWildCards
-  - DisambiguateRecordFields
-  - GADTs
-  - InstanceSigs
-  - PackageImports
-  - QuasiQuotes
-  - TupleSections
-  - MultiWayIf
-  - LambdaCase
-  - DeriveFunctor
-  - NegativeLiterals
-  - BinaryLiterals
-  - ExplicitNamespaces
-  - PatternSynonyms
-  - ApplicativeDo
-  - DuplicateRecordFields
-  - BlockArguments
-  - NumericUnderscores
+  - -RecursiveDo
+  - -MultiParamTypeClasses
+  - -FunctionalDependencies
+  - -RankNTypes
+  - -ExistentialQuantification
+  - -ScopedTypeVariables
+  - -ImplicitParams
+  - -KindSignatures
+  - -BangPatterns
+  - -NamedFieldPuns
+  - -TypeFamilies
+  - -StandaloneDeriving
+  - -UnicodeSyntax
+  - -LiberalTypeSynonyms
+  - -TypeOperators
+  - -RecordWildCards
+  - -DisambiguateRecordFields
+  - -GADTs
+  - -InstanceSigs
+  - -PackageImports
+  - -QuasiQuotes
+  - -TupleSections
+  - -MultiWayIf
+  - -LambdaCase
+  - -DeriveFunctor
+  - -NegativeLiterals
+  - -BinaryLiterals
+  - -ExplicitNamespaces
+  - -PatternSynonyms
+  - -ApplicativeDo
+  - -DuplicateRecordFields
+  - -BlockArguments
+  - -NumericUnderscores
 
 # Control which extensions/flags/modules/functions can be used
 #
